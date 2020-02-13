@@ -24,7 +24,7 @@ app.get('/' ,(req, res) => {
     res.send(`
     
     <body>
-        <a href="https://arcane-escarpment-21028.herokuapp.com/api/todos">ToDos</a>
+        <h1><a href="https://arcane-escarpment-21028.herokuapp.com/api/todos">ToDos</a></h1>
     </body>
     
     
