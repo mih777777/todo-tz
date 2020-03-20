@@ -2,11 +2,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const keys = require('./config/keys')
 const ToDoRouter = require('./routes/todo')
 
 const app = express()
 
-mongoose.connect('mongodb://mih777:mih777@ds151416.mlab.com:51416/server-tren', 
+mongoose.connect(keys.mongoURI,
     { 
         useNewUrlParser: true ,
         useUnifiedTopology: true,
@@ -14,22 +15,13 @@ mongoose.connect('mongodb://mih777:mih777@ds151416.mlab.com:51416/server-tren',
     }
   )
   .then(() => console.log('MongoDB connected.'))
-  .catch(error => console.log(error))  
+  .catch(error => console.log(error)) 
+   
+mongoose.set('useFindAndModify', false)
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-
-app.get('/' ,(req, res) => {
-    res.send(`
-    
-    <body>
-        <h1><a href="https://arcane-escarpment-21028.herokuapp.com/api/todos">ToDos</a></h1>
-    </body>
-    
-    
-    `)
-})
 
 app.use('/api/todos', ToDoRouter)
 
