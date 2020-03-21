@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoServiceService } from 'src/app/services/todo-service.service';
+import { Todo } from '../../interfaces'
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  todos: Todo[] = []
+
+  constructor(private todoService: TodoServiceService) { }
 
   ngOnInit(): void {
+    this.fetchAllTodos()
   }
+
+  fetchAllTodos(){
+    this.todoService.getAll()
+      .subscribe(result => {
+        this.todos = result
+      })
+  }
+
 
 }
