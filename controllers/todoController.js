@@ -33,6 +33,7 @@ module.exports.getAllTodos = async (req, res) => {
 
 }
 
+
 module.exports.getOneById = async(req,res) => {
     const id = req.params.id
     await Todo.findOne({_id: id}, function(err, todo){
@@ -44,6 +45,25 @@ module.exports.getOneById = async(req,res) => {
         res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
         res.json(todo)
     });
+}
+                       
+module.exports.getByCategory = async(req, res) => {
+    
+    try {
+        await Todo.find({category: req.params.category}, (err, todo) => {   
+            if(err){
+                res.send(err)
+            }
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+            res.json(todo)
+
+        })
+        
+    } catch(e) {
+        res.send(e)
+    }
+
 }
 
 module.exports.updateTodo = async(req, res) => {

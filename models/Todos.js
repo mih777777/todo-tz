@@ -11,7 +11,7 @@ const todoSchema = new Schema({
         type: String,
         required: 'Enter a description of todo'
     },
-    importance: {
+    category: {
         type: String,
         required: 'Enter a impotance of todo'
     },
