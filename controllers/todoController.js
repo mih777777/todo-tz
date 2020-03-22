@@ -69,6 +69,7 @@ module.exports.getByCategory = async(req, res) => {
 module.exports.updateTodo = async(req, res) => {
     const updated = {
         title: req.body.title,
+        category: req.body.category,
         description: req.body.description
     }
 

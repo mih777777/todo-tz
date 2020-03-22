@@ -26,8 +26,7 @@ export class CreateTodoComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(''),
       category: new FormControl(''),
-      description: new FormControl(''),
-
+      description: new FormControl('')
     })
   }
 
