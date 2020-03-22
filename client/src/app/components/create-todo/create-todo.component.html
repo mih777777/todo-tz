@@ -1,14 +1,23 @@
 <div class="container">
     <div class="centr">
     <br><h3 align="center"> Страница добавления задания </h3><br>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="createTodo()">
         <div class="form-group">
           <label for="exampleFormControlInput1">Название задания</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="введите название">
+          <input 
+            type="email" 
+            class="form-control" 
+            formControlName = "title" 
+            placeholder="введите название"
+          >
+          
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Важность</label>
-          <select class="form-control" id="exampleFormControlSelect1" >
+          <select 
+            class="form-control" 
+            formControlName = "category"
+          >
             <option>ordinary</option>
             <option>important</option>
             <option>very-important</option>
@@ -16,9 +25,15 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Описание задания</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="введите описание"></textarea>
+          <textarea 
+            class="form-control" 
+            rows="3" 
+            placeholder="введите описание"
+            formControlName = "description"
+          ></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Добавить</button>
+        <a [routerLink]="['/']" class="right"> Вернуться на главную страницу  </a>
       </form>
     </div>
 </div>

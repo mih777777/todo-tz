@@ -1,7 +1,7 @@
 <div class="container">
     <div>
         
-        <br><a href="create">Добавить задание</a>
+        <br><a routerLink="/create">Добавить задание</a>
         <h3 align="center"> ToDoList </h3><br>
     </div>
     
@@ -11,18 +11,20 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Importance</th>
+            <th scope="col">Description</th>
             <th scope="col">Actions</th>
             <th scope="col">Created date</th>
           </tr>
         </thead>
         <tbody *ngFor="let todo of todos; let i = index;">
           <tr>
-            <th scope="row">{{ i }}</th>
-            <td>{{ todo.title }}</td>
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ todo.title }} </td>
             <td>{{ todo.category }}</td>
+            <td>{{ todo.description }}</td>
             <td>
                 <div align="center">
-                    <a href="" class="edit">edit  </a>
+                    <a [routerLink]="['/update', todo._id]" class="edit">edit  </a>
                     <a href="" class="delete">delete  </a>
                     <a href="" class="executed">executed  </a>
                     <a href="" class="expired">expired</a>
