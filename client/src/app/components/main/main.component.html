@@ -13,6 +13,7 @@
             <th scope="col">Importance</th>
             <th scope="col">Description</th>
             <th scope="col">Actions</th>
+            <th scope="col"><a href="">delete many</a></th>
             <th scope="col">Created date</th>
           </tr>
         </thead>
@@ -25,11 +26,18 @@
             <td>
                 <div align="center">
                     <a [routerLink]="['/update', todo._id]" class="edit">edit  </a>
-                    <a href="" class="delete">delete  </a>
+                    <a 
+                      href="" 
+                      onclick="event.preventDefault()" 
+                      (click)="removeTodo(todo._id)" 
+                      class="delete">delete  
+                    </a>
+                    
                     <a href="" class="executed">executed  </a>
                     <a href="" class="expired">expired</a>
                 </div>   
             </td>
+            <td><div align="center"><input  type="checkbox" ></div></td>
             <td>21.11.20</td>
           </tr>
         </tbody>

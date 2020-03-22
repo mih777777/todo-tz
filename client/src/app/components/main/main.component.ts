@@ -24,5 +24,13 @@ export class MainComponent implements OnInit {
       })
   }
 
+  removeTodo(id: string): void{
+    this.todoService.delete(id)
+      .subscribe(() => {
+        this.fetchAllTodos()
+      }) 
+    
+  }
+
 
 }
