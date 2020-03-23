@@ -37,8 +37,19 @@
                     <a href="" class="expired">expired</a>
                 </div>   
             </td>
-            <td><div align="center"><input  type="checkbox" ></div></td>
-            <td>21.11.20</td>
+
+            <td>
+              <div align="center">
+                <input 
+                  type="checkbox" 
+                  (click)="changeIsChecked( todo._id )"
+                >
+                <h3></h3>
+              </div></td>
+
+              <!-- [checked]="isChecked ? true : false" -->
+            <!-- <td>21.11.20</td> -->
+            <td>{{ todo._id }}</td>
           </tr>
         </tbody>
       </table>   
