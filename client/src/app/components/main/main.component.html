@@ -1,7 +1,20 @@
 <div class="container">
     <div>
         
-        <br><a routerLink="/create">Добавить задание</a>
+        <br>
+        <a routerLink="/create">Добавить задание</a>
+
+        <div class="right">
+          <select 
+            class="form-control" 
+            formControlName = "category"
+          >
+            <option>ordinary</option>
+            <option>important</option>
+            <option>very-important</option>
+        </select>
+        </div>
+
         <h3 align="center"> ToDoList </h3><br>
     </div>
     
@@ -48,7 +61,7 @@
               </div></td>
 
             
-            <td>{{ todo.created_date }}</td>
+            <td>{{ todo.created_date | date}}</td>
           </tr>
         </tbody>
       </table>   
