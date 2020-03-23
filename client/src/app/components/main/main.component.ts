@@ -25,13 +25,22 @@ export class MainComponent implements OnInit {
       this.arrayId.splice(res, 1)
     }
 
-    console.log(this.arrayId)
+  }
+
+  deleteMany(){
+    let arr = this.arrayId
+
+    for(let i = 0; i < arr.length; i++){
+      this.todoService.delete(arr[i])
+      .subscribe(() => {})
+      this.fetchAllTodos()
+    }
+    
   }
 
 
   ngOnInit(): void {
     this.fetchAllTodos()
-    
   }
 
   fetchAllTodos(){
