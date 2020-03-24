@@ -7,7 +7,7 @@
         <div class="right">
           <select 
             class="form-control" 
-            formControlName = "category"
+            
           >
             <option>ordinary</option>
             <option>important</option>
@@ -37,8 +37,10 @@
             <td>
               <div align="center">
                 <input 
+                  (click)="onChange(todo._id)"
                   type="checkbox" 
                   [checked]="todo.completed"
+                  
                 >
               </div>
             </td>

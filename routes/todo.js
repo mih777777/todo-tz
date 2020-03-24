@@ -8,6 +8,7 @@ router.get('/cat/:category', controller.getByCategory)
 router.post('/create', controller.create)
 router.delete('/delete/:id', controller.deleteTodo)
 router.put('/update/:id', controller.updateTodo)
+router.put('/update/complete/:id', controller.updateCompleted)
 
 
 module.exports = router

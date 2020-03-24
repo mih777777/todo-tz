@@ -20,11 +20,6 @@ export class UpdateTodoComponent implements OnInit {
   uSub: Subscription
 
   selectedValue = null
-  categories = [
-    { name: 'ordinary' },
-    { name: 'important' },
-    { name: 'very-important' }
-  ]
 
   constructor(
     private todoService: TodoServiceService,
@@ -40,7 +35,7 @@ export class UpdateTodoComponent implements OnInit {
         return this.todoService.getById(params['id'])
       })
     ).subscribe((todo: Todo) => {
-        console.log(todo)
+  
         this.todo = todo
         this.form = new FormGroup({
 

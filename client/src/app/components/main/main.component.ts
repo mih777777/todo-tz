@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
-import { Todo } from '../../interfaces'
+import { Todo, TodoComplete } from '../../interfaces'
 
 @Component({
   selector: 'app-main',
@@ -9,14 +9,28 @@ import { Todo } from '../../interfaces'
 })
 export class MainComponent implements OnInit {
 
-  loading: boolean = true
-  
   arrayId = []
-  //isChecked: boolean = false
 
   todos: Todo[] = []
+  //todo: TodoComplete[] = []
+  //todo: Todo
+
+  //complet: boolean
 
   constructor(private todoService: TodoServiceService) { }
+
+  ngOnInit(): void {
+    this.fetchAllTodos()
+  }
+
+  onChange(id: string) {
+    this.todoService.completeTodo(id).subscribe(todo => {
+      //console.log(todo)
+      const res = this.todos.find(t => t.id === todo.id)
+      res.completed = true
+      this.fetchAllTodos()
+    })
+  }
   
   changeIsChecked(id: string) {
     let res = this.arrayId.indexOf(id)
@@ -40,10 +54,6 @@ export class MainComponent implements OnInit {
     
   }
 
-
-  ngOnInit(): void {
-    this.fetchAllTodos()
-  }
 
   fetchAllTodos(){
     this.todoService.getAll()

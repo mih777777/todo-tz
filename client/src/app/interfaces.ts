@@ -7,3 +7,8 @@ export interface Todo {
     completed: boolean
     expired: boolean
 }
+
+export interface TodoComplete {
+    id?: string
+    completed: boolean
+}
