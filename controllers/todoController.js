@@ -70,7 +70,9 @@ module.exports.updateTodo = async(req, res) => {
     const updated = {
         title: req.body.title,
         category: req.body.category,
-        description: req.body.description
+        description: req.body.description,
+        completed: req.body.completed,
+        expired: req.body.expired
     }
 
     try {

@@ -8,6 +8,8 @@ import { Todo } from '../../interfaces'
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+  loading: boolean = true
   
   arrayId = []
   //isChecked: boolean = false

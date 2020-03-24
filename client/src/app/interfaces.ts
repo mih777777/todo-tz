@@ -4,4 +4,6 @@ export interface Todo {
     description: string
     category: string
     created_date: string
+    completed: boolean
+    expired: boolean
 }

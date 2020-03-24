@@ -26,7 +26,9 @@ export class CreateTodoComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(''),
       category: new FormControl(''),
-      description: new FormControl('')
+      description: new FormControl(''),
+      completed: new FormControl(''),
+      expired: new FormControl('')
     })
   }
 
@@ -38,7 +40,9 @@ export class CreateTodoComponent implements OnInit {
       title: formData.title,
       category: formData.category,
       description: formData.description,
-      created_date: formData.created_date
+      created_date: formData.created_date,
+      completed: false,
+      expired: false
     }).subscribe(todo => {
       this.todos.push(todo)
       this.form.reset()

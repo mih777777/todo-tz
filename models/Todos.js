@@ -15,6 +15,14 @@ const todoSchema = new Schema({
         type: String,
         required: 'Enter a impotance of todo'
     },
+    completed: {
+        type: Boolean,
+        required: 'completed'
+    },
+    expired: {
+        type: Boolean,
+        required: 'expired'
+    },
     created_date: {
         type: Date,
         default: Date.now

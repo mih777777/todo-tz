@@ -46,7 +46,8 @@ export class UpdateTodoComponent implements OnInit {
 
           title: new FormControl(todo.title),
           category: new FormControl(todo.category),
-          description: new FormControl(todo.description)
+          description: new FormControl(todo.description),
+          completed: new FormControl(todo.completed)
 
         })
     })
@@ -61,7 +62,8 @@ export class UpdateTodoComponent implements OnInit {
       ...this.todo,
       title: this.form.value.title,
       category: this.form.value.category,
-      description: this.form.value.description
+      description: this.form.value.description,
+      completed: this.form.value.completed
       
     }).subscribe(() => {
       this.todo = this.form.value

@@ -22,7 +22,8 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Title</th>
+            <th scope="col">Done</th>
+            <th scope="col" >Title</th>
             <th scope="col">Importance</th>
             <th scope="col">Description</th>
             <th scope="col">Actions</th>
@@ -33,7 +34,15 @@
         <tbody *ngFor="let todo of todos; let i = index;">
           <tr>
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ todo.title }} </td>
+            <td>
+              <div align="center">
+                <input 
+                  type="checkbox" 
+                  [checked]="todo.completed"
+                >
+              </div>
+            </td>
+            <td [class.done]="todo.completed">{{ todo.title }} </td>
             <td>{{ todo.category }}</td>
             <td>{{ todo.description }}</td>
             <td>
@@ -46,8 +55,8 @@
                       class="delete">delete  
                     </a>
                     
-                    <a href="" class="executed">completed  </a>
-                    <a href="" class="expired">expired</a>
+                    <a href="" class="executed">completed ({{todo.completed}}) </a>
+                    <a href="" class="expired">expired ({{todo.expired}})</a>
                 </div>   
             </td>
 
@@ -58,7 +67,8 @@
                   (click)="changeIsChecked( todo._id )"
                 >
                 <h3></h3>
-              </div></td>
+              </div>
+            </td>
 
             
             <td>{{ todo.created_date | date}}</td>
