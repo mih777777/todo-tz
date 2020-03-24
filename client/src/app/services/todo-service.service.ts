@@ -19,6 +19,10 @@ export class TodoServiceService {
     return this.http.get<Todo[]>('http://localhost:3000/api/todos')
   }
 
+  getAllByCategory(cat: string): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`http://localhost:3000/api/todos/cat/${cat}`)
+  }
+
   getById(id: string): Observable<Todo> {
     return this.http.get<Todo>(`http://localhost:3000/api/todos/${id}`)
       .pipe(map((todo: Todo) => {

@@ -10,12 +10,8 @@ import { Todo, TodoComplete } from '../../interfaces'
 export class MainComponent implements OnInit {
 
   arrayId = []
-
   todos: Todo[] = []
-  //todo: TodoComplete[] = []
-  //todo: Todo
-
-  //complet: boolean
+  catName: string 
 
   constructor(private todoService: TodoServiceService) { }
 
@@ -25,7 +21,6 @@ export class MainComponent implements OnInit {
 
   onChange(id: string) {
     this.todoService.completeTodo(id).subscribe(todo => {
-      //console.log(todo)
       const res = this.todos.find(t => t.id === todo.id)
       res.completed = true
       this.fetchAllTodos()
@@ -54,12 +49,23 @@ export class MainComponent implements OnInit {
     
   }
 
+  inpSelect(event){
+    this.catName = event.target.value
+    this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
+  }
+
+  fetchTodosByCategory(catName: string) {
+    
+    this.todoService.getAllByCategory(catName)
+      .subscribe(result => {
+        this.todos = result
+      })
+  }
 
   fetchAllTodos(){
     this.todoService.getAll()
       .subscribe(result => {
         this.todos = result
-        //console.log(this.todos)
       })
   }
 

@@ -7,8 +7,10 @@
         <div class="right">
           <select 
             class="form-control" 
-            
+            (input)="inpSelect($event)" 
+            [(ngModel)]="catName"
           >
+            <option selected="selected">all</option>
             <option>ordinary</option>
             <option>important</option>
             <option>very-important</option>
