@@ -105,6 +105,23 @@ module.exports.updateCompleted = async(req, res) => {
     }
 }
 
+module.exports.updateExpire = async(req, res) => {
+    const updated = {
+        expired: req.body.expired
+    }
+
+    try {
+    const todo = await Todo.findOneAndUpdate(
+        {_id: req.params.id},
+        {$set: updated},
+        {new: true}
+    )
+        res.status(200).json(todo)
+    } catch (e) {
+        console.log(res, e)
+    }
+}
+
 module.exports.deleteTodo = async (req, res) => {
     await Todo.deleteOne({ _id: req.params.id }, (err, todo) => {
         if(err){

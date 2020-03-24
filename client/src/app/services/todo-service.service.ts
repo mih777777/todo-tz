@@ -43,7 +43,7 @@ export class TodoServiceService {
   }
 
   expireTodo(id: string): Observable<Todo> {
-    return this.http.put<Todo>(`http://localhost:3000/api/todos/update/complete/${id}`, {
+    return this.http.put<Todo>(`http://localhost:3000/api/todos/update/expire/${id}`, {
       expired: true
     })
   }

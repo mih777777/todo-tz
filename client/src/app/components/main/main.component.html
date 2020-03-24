@@ -1,9 +1,7 @@
 <div class="container">
     <div>
-        
         <br>
         <a routerLink="/create">Добавить задание</a>
-
         <div class="right">
           <select 
             class="form-control" 
@@ -46,7 +44,7 @@
                 >Done</a>
               </div>
             </td>
-            <td [class.done]="todo.completed">{{ todo.title }} </td>
+            <td [class.exp-background]="todo.expired" [class.done]="todo.completed">{{ todo.title }} </td>
             <td>{{ todo.category }}</td>
             <td>{{ todo.description }}</td>
             <td>
@@ -66,7 +64,6 @@
                     >expired</a>
                 </div>   
             </td>
-
             <td>
               <div align="center">
                 <input 
@@ -75,9 +72,7 @@
                 >
                 <h3></h3>
               </div>
-            </td>
-
-            
+            </td> 
             <td>{{ todo.created_date | date}}</td>
           </tr>
         </tbody>

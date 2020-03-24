@@ -14,7 +14,7 @@
 }
 
 .expired {
-    color: rgb(238, 214, 1);
+    color: #7d8d06;
     margin-right: 15px;
 }
 
@@ -28,4 +28,9 @@
 
 .completed {
     color: #1a8bc2; 
+}
+
+.exp-background {
+    color: red;
+    border: none;
 }
