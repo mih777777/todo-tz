@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
-import { Todo, TodoComplete } from '../../interfaces'
+import { Todo } from '../../interfaces'
 
 @Component({
   selector: 'app-main',
@@ -11,19 +11,21 @@ export class MainComponent implements OnInit {
 
   arrayId = []
   todos: Todo[] = []
-  catName: string 
+  catName: string = 'all'
 
   constructor(private todoService: TodoServiceService) { }
 
   ngOnInit(): void {
-    this.fetchAllTodos()
+    
+    this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
   }
 
   onChange(id: string) {
     this.todoService.completeTodo(id).subscribe(todo => {
       const res = this.todos.find(t => t.id === todo.id)
       res.completed = true
-      this.fetchAllTodos()
+      this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
+      
     })
   }
   
