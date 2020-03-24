@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Todo , TodoComplete} from '../interfaces'
+import { Todo } from '../interfaces'
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -39,6 +39,12 @@ export class TodoServiceService {
   completeTodo(id: string): Observable<Todo> {
     return this.http.put<Todo>(`http://localhost:3000/api/todos/update/complete/${id}`, {
       completed: true
+    })
+  }
+
+  expireTodo(id: string): Observable<Todo> {
+    return this.http.put<Todo>(`http://localhost:3000/api/todos/update/complete/${id}`, {
+      expired: true
     })
   }
 

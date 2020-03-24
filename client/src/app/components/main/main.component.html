@@ -38,12 +38,12 @@
             <th scope="row">{{ i + 1 }}</th>
             <td>
               <div align="center">
-                <input 
+                <a 
+                  href="" 
+                  onclick="event.preventDefault()"
+                  class="completed"
                   (click)="onChange(todo._id)"
-                  type="checkbox" 
-                  [checked]="todo.completed"
-                  
-                >
+                >Done</a>
               </div>
             </td>
             <td [class.done]="todo.completed">{{ todo.title }} </td>
@@ -58,7 +58,12 @@
                       (click)="removeTodo(todo._id)" 
                       class="delete">delete  
                     </a>
-                    <a href="" class="expired">expired ({{todo.expired}})</a>
+                    <a 
+                      href="" 
+                      onclick="event.preventDefault()"
+                      class="expired"
+                      (click)="onClickExpireLink(todo._id)"
+                    >expired</a>
                 </div>   
             </td>
 

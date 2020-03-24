@@ -28,6 +28,15 @@ export class MainComponent implements OnInit {
       
     })
   }
+
+  onClickExpireLink(id: string) {
+    this.todoService.expireTodo(id).subscribe(todo => {
+      const res = this.todos.find(t => t.id === todo.id)
+      res.expired = true
+      this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
+      
+    })
+  }
   
   changeIsChecked(id: string) {
     let res = this.arrayId.indexOf(id)

@@ -16,11 +16,6 @@ export class UpdateTodoComponent implements OnInit {
   todo: Todo
   form: FormGroup
 
-  submitted = false
-  uSub: Subscription
-
-  selectedValue = null
-
   constructor(
     private todoService: TodoServiceService,
     private router: Router,
@@ -51,9 +46,7 @@ export class UpdateTodoComponent implements OnInit {
 
   submit() {
 
-    this.submitted = true
-
-    this.uSub = this.todoService.update({
+    this.todoService.update({
       ...this.todo,
       title: this.form.value.title,
       category: this.form.value.category,
@@ -62,7 +55,6 @@ export class UpdateTodoComponent implements OnInit {
       
     }).subscribe(() => {
       this.todo = this.form.value
-      this.submitted = false
       this.form.reset()
       this.router.navigate(['/'])
     })

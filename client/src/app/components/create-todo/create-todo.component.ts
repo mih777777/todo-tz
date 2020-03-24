@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-
 import { TodoServiceService } from 'src/app/services/todo-service.service';
 import { Todo } from 'src/app/interfaces';
 
