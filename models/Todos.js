@@ -13,7 +13,7 @@ const todoSchema = new Schema({
     },
     category: {
         type: String,
-        required: 'Enter a impotance of todo'
+        required: 'Enter category'
     },
     completed: {
         type: Boolean,
