@@ -20,6 +20,21 @@ export class MainComponent implements OnInit {
     this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
   }
 
+  deleteMany(){
+    let arr = this.arrayId
+
+    for(let i = 0; i < arr.length; i++){
+      this.todoService.delete(arr[i])
+      .subscribe(() => {})
+    }
+    
+  }
+
+  deleteAll(){
+    this.deleteMany()
+    this.ngOnInit()
+  }
+
   onChange(id: string) {
     this.todoService.completeTodo(id).subscribe(todo => {
       const res = this.todos.find(t => t.id === todo.id)
@@ -47,17 +62,6 @@ export class MainComponent implements OnInit {
       this.arrayId.splice(res, 1)
     }
 
-  }
-
-  deleteMany(){
-    let arr = this.arrayId
-
-    for(let i = 0; i < arr.length; i++){
-      this.todoService.delete(arr[i])
-      .subscribe(() => {})
-      this.fetchAllTodos()
-    }
-    
   }
 
   inpSelect(event){
