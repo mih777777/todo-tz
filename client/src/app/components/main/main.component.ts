@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
 import { Todo } from '../../interfaces'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -13,16 +14,21 @@ export class MainComponent implements OnInit {
   todos: Todo[] = []
   catName: string = 'all'
 
-  constructor(private todoService: TodoServiceService) { }
+  constructor(
+    private todoService: TodoServiceService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     
     this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
   }
 
+
+
   deleteMany(){
     let arr = this.arrayId
-
+    
     for(let i = 0; i < arr.length; i++){
       this.todoService.delete(arr[i])
       .subscribe(() => {})
@@ -32,7 +38,7 @@ export class MainComponent implements OnInit {
 
   deleteAll(){
     this.deleteMany()
-    this.ngOnInit()
+    this.ngOnInit() 
   }
 
   onChange(id: string) {
